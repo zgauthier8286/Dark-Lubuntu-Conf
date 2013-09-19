@@ -1,0 +1,131 @@
+background yes
+    use_xft yes
+    xftfont HandelGotD:size=8
+    xftalpha 0.5
+
+# Update interval in seconds
+    update_interval 4.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+    total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+background no
+    own_window yes
+    own_window_type normal
+    own_window_class Conky
+    own_window_transparent yes
+    own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+    double_buffer yes
+text_buffer_size 1024
+
+# Minimum size of text area
+    minimum_size 200 5
+    maximum_width 220
+
+# Draw shades?
+    draw_shades no
+
+# Draw outlines?
+    draw_outline no
+
+# Draw borders around text
+    draw_borders no
+    draw_graph_borders yes
+
+# Default colors and also border colors
+    default_color grey
+    default_shade_color red
+    default_outline_color green
+
+# Text alignment, other possible values are commented
+    alignment top_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+    gap_x 5
+    gap_y 30
+
+# Subtract file system buffers from used memory?
+    no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+    uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+    cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+    net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+    override_utf8_locale yes
+
+    TEXT
+
+SYSTEM ${hr 2}
+
+    Uptime: ${alignr}${uptime}
+
+    CPU $alignr ${cpu cpu0}%
+    ${cpugraph cpu0}
+    Core 1: ${freq 1} MHz ${alignr}Temperature: ${hwmon 1 temp 2} C°
+
+    ${cpu cpu1}% ${cpubar cpu1}
+
+    Core 2: ${freq 2} MHz ${alignr}Temperature: ${hwmon 1 temp 4} C°
+
+    ${cpu cpu2}% ${cpubar cpu2}
+
+    RAM $alignc $mem / $memmax $alignr $memperc%
+    $membar
+    
+    swap $alignc $swap / $swapmax $alignr $swapperc%
+    ${swapbar}
+
+    GPU : ${hwmon 2 temp 1} C°
+
+HD ${hr 2}
+
+    Space (/  ) $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+    ${fs_bar /}
+    Temp : ${execi 4 hddtemp -n /dev/sda} C°
+     
+PROCESSUS ${hr 2}
+
+ $processes processes $alignr PID    %CPU    %MEM
+    ($running_processes running)
+
+    ${top name 1} $alignr ${top pid 1} ${top cpu 1}  ${top mem 1} 
+    ${top name 2} $alignr ${top pid 2} ${top cpu 2}  ${top mem 2} 
+    ${top name 3} $alignr ${top pid 3} ${top cpu 3}  ${top mem 3} 
+    ${top name 4} $alignr ${top pid 4} ${top cpu 4}  ${top mem 4} 
+    ${top name 5} $alignr ${top pid 5} ${top cpu 5}  ${top mem 5} 
+    ${top name 6} $alignr ${top pid 6} ${top cpu 6}  ${top mem 6} 
+    ${top name 7} $alignr ${top pid 7} ${top cpu 7}  ${top mem 7} 
+    ${top name 8} $alignr ${top pid 8} ${top cpu 8}  ${top mem 8} 
+    ${top name 9} $alignr ${top pid 8} ${top cpu 9}  ${top mem 9} 
+
+NETWORK ${hr 2}
+${if_existing /proc/net/route wlan0}
+    Up: ${upspeed wlan0} kb/s ${alignr}${upspeedgraph wlan0 8,60 789E2D A7CC5C}
+    Down: ${downspeed wlan0} kb/s ${alignr}${downspeedgraph wlan0 8,60 789E2D A7CC5C}
+    Upload: ${alignr}${totalup wlan0}
+    Download: ${alignr}${totaldown wlan0}
+    Signal: ${wireless_link_qual wlan0}% ${alignr}${wireless_link_bar 8,60 wlan0}
+${else}${if_existing /proc/net/route eth0}
+    Up: ${upspeed eth0} kb/s ${alignr}${upspeedgraph eth0 8,60 789E2D A7CC5C}
+    Down: ${downspeed eth0} kb/s ${ali,gnr}${downspeedgraph eth0 8,60 789E2D A7CC5C}
+    Upload: ${alignr}${totalup eth0}
+    Download: ${alignr}${totaldown eth0}
+${endif}${else}${if_existing /proc/net/route eth1}
+    Up: ${upspeed eth1} kb/s ${alignr}${upspeedgraph eth1 8,60 789E2D A7CC5C}
+    Down: ${downspeed eth1} kb/s ${alignr}${downspeedgraph eth1 8,60 789E2D A7CC5C}
+    Upload: ${alignr}${totalup eth1}
+    Download: ${alignr}${totaldown eth1}
+${endif}${else}${font PizzaDude Bullets:size=14}4${font}   Network Unavailable${endif}

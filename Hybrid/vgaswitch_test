@@ -1,0 +1,31 @@
+#!/bin/bash
+# Place this file under /usr/local/bin/vgaswitch and chmod a+x
+ 
+# load module (without this module "vgaswitcheroo" isn't available on my system)
+# modprobe radeon
+ 
+# switch
+SWITCH=/sys/kernel/debug/vgaswitcheroo/switch
+if [ $# -eq 1 ]; then
+    if [ "$1" == "low" ]; then
+        echo "Turning on low-power card."
+        echo DIGD > $SWITCH
+    elif [ "$1" == "high" ]; then
+        echo "Turning on high-power card."
+        echo DDIS > $SWITCH
+    elif [ "$1" == "on" ]; then
+        echo "Turning on unused card."
+        echo ON > $SWITCH
+    elif [ "$1" == "off" ]; then
+        echo "Turning off unused card."
+        echo OFF > $SWITCH
+    elif [ "$1" == "st" ]; then
+        cat $SWITCH
+	sleep2
+    fi
+else
+    echo "Commands: [low, high, on, off]"
+    echo
+    echo "Status:"
+    cat $SWITCH
+fi

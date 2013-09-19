@@ -1,0 +1,1 @@
+This is my custom thème conf for Lubuntu and  Hybrid Graphic management for Msi ge 600
