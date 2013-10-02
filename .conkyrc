@@ -120,7 +120,7 @@ ${if_existing /proc/net/route wlan0}
     Signal: ${wireless_link_qual wlan0}% ${alignr}${wireless_link_bar 8,60 wlan0}
 ${else}${if_existing /proc/net/route eth0}
     Up: ${upspeed eth0} kb/s ${alignr}${upspeedgraph eth0 8,60 789E2D A7CC5C}
-    Down: ${downspeed eth0} kb/s ${ali,gnr}${downspeedgraph eth0 8,60 789E2D A7CC5C}
+    Down: ${downspeed eth0} kb/s ${alignr}${downspeedgraph eth0 8,60 789E2D A7CC5C}
     Upload: ${alignr}${totalup eth0}
     Download: ${alignr}${totaldown eth0}
 ${endif}${else}${if_existing /proc/net/route eth1}
