@@ -19,9 +19,9 @@ LISTE=$LISTE" build-essential git gitk gedit "
 # Network
 #LISTE=$LISTE" "
 # Systeme
-LISTE=$LISTE" lm-sensors hardinfo conky-all openbox-themes  grub-customizer ubuntu-tweak akawoken-icon-theme "
+LISTE=$LISTE" lm-sensors hardinfo conky-all openbox-themes  grub-customizer ubuntu-tweak"
 # Web
-#LISTE=$LISTE" "
+#LISTE=$LISTE"akawoken-icon-theme  "
 
 REMOVE_LISTE="xpad leafpad pidgin pidgin-data pidgin-microblog sylpheed* transmission* audacious* xfburn xscreensaver ace-of-penguins"
 
