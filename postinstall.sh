@@ -4,7 +4,8 @@
 # Khancyr
 # GPL
 #
-# Syntaxe: # sudo ./postinstall.sh
+# Syntaxe: # chmod +x postinstall.sh
+# 		sudo ./postinstall.sh
 #
 #
 #=============================================================================
@@ -12,15 +13,17 @@
 #
 LISTE=""
 # Developpement
-LISTE=$LISTE" build-essential git gitk geany geany-plugins"
+LISTE=$LISTE" build-essential git gitk gedit "
 # Multimedia
 #LISTE=$LISTE" "
 # Network
 #LISTE=$LISTE" "
 # Systeme
-LISTE=$LISTE" lm-sensors hardinfo conky-all openbox-themes  grub-customizer ubuntu-tweak kawoken-icon-theme "
+LISTE=$LISTE" lm-sensors hardinfo conky-all openbox-themes  grub-customizer ubuntu-tweak akawoken-icon-theme "
 # Web
 #LISTE=$LISTE" "
+
+REMOVE_LISTE="xpad leafpad pidgin pidgin-data pidgin-microblog sylpheed* transmission* audacious* xfburn xscreensaver ace-of-penguins"
 
 #=============================================================================
 
@@ -54,6 +57,36 @@ then echo -e "\e[44m \e[1;31m Déja Ajouté !\e[0m\n"
 else add-apt-repository ppa:tualatrix/ppa
 fi
 
+
+# Mise a jour 
+#------------
+
+echo -e "\e[44m \e[1;31m Mise a jour de la liste des depots \e[0m\n"
+apt-get -y update
+
+echo -e "\e[44m \e[1;31m Mise a jour du systeme \e[0m\n"
+apt-get -y upgrade
+
+
+# Suppression des packet inutiles
+#------------
+
+apt-get -y purge $REMOVE_LISTE
+
+# Mise a jour 
+#------------
+
+echo -e "\e[44m \e[1;31m Mise a jour de la liste des depots \e[0m\n"
+apt-get -y update
+
+echo -e "\e[44m \e[1;31m Mise a jour du systeme \e[0m\n"
+apt-get -y upgrade
+
+# Suppression des packet inutiles
+#------------
+
+apt-get -y autoremove --purge
+apt-get -y autoclean --purge
 
 # Mise a jour 
 #------------
