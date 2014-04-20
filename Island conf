@@ -1,0 +1,34 @@
+    1  sudo apt-get install git ssh
+    2  sudo apt-get install gparted
+    3  git config --global user.name khancyr
+    4  git config --global user.email khancyr@gmail.com
+    5  ssh-keygen -t rsa -C khancyr@gmail.com
+    6  git clone git@github.com:khancyr/Dark-Lubuntu-Conf.git
+    7  cd Dark-Lubuntu-Conf/
+    8  leafpad postinstall.sh 
+    9  sudo apt-get purge gnome-disk-utility 
+   10  sudo ./postinstall.sh 
+   11  sudo sensors-detect 
+   12  dpkg-reconfigure hddtemp 
+   13  sudo dpkg-reconfigure hddtemp 
+   14  conky 
+   15  sudo grub-customizer 
+   16  xrandr 
+   17  xrandr --output DVI-0 --mode 1440x900
+   18  xrandr --output DVI-0 --addmode 1440x900
+   19  xrandr --addmode DVI-0 1440x900
+   20  cvt 1440 900 60
+   21  xrandr --newmode  Modeline "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+   22  xrandr --newmode  Modeline "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -Hsync +Vsync
+   23  xrandr --newmode  "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+   24  xrandr --addmode DVI-0 1440x900
+   25  xrandr 
+   26  cvt
+   27  xrandr --addmode DVI-0 1440x900
+   28  xrandr --help
+   29  xrandr --output DVI-0 --newmode  "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+   30  xrandr --newmode  "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+   31  xrandr --current 
+   32  xrandr --addmode DVI-0 "1440x900_60.00"
+   33  history
+

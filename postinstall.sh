@@ -19,7 +19,7 @@ LISTE=$LISTE" build-essential git gitk gedit "
 # Network
 #LISTE=$LISTE" "
 # Systeme
-LISTE=$LISTE" lm-sensors hardinfo hddtemp conky-all openbox-themes  grub-customizer ubuntu-tweak"
+LISTE=$LISTE" lm-sensors hardinfo hddtemp conky-all  grub-customizer ubuntu-tweak"
 # Web
 #LISTE=$LISTE"akawoken-icon-theme  "
 
